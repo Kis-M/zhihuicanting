@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>智慧餐厅系统管理界面</title>
+    <!-- 这个是提前引入的字体图标 -->
+    <!--<meta http-equiv="refresh" content="2">-->
+    <meta http-equiv="refresh" content="2">
+    <link rel="stylesheet" href="../static/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../static/css/index.css"/>
+    <script>
+        function checkForm() {
+            alert("LED1灯已打开")
+        }
+
+        function checkForm1() {
+            alert("LED1灯已关闭")
+        }
+
+        function checkForm3() {
+            alert("LED2灯已打开")
+        }
+
+        function checkForm4() {
+            alert("LED2灯已关闭")
+        }
+    </script>
+</head>
+<body>
+<div class="navbar">
+    <input type="checkbox" id="checkbox"/>
+    <!-- 复选框的id属性值和label元素的for属性值必须是相同的,才能够通过点击label选中复选框 -->
+    <label for="checkbox">
+        <i class="fa fa-bars"></i>
+    </label>
+    <ul style="float: left;">
+        <li>
+            <img src="../static/images/1.jpg" alt=""/>
+            <span>欢迎您! {{ session.name }}</span>
+        </li>
+        <li>
+            <a href="/houtaishouye">
+                <i class="fa fa-home"></i>
+                <span>后台首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/tongji">
+                <i class="fa fa-sitemap"></i>
+                <span>统计</span>
+            </a>
+        </li>
+        <li>
+            <a href="/dingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>订单列表</span>
+            </a>
+        </li>
+        <li>
+            <a href="/lishidingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>历史订单</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/guanlijiemian">
+                <i class="fa fa-windows"></i>
+                <span>管理界面</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="container" style="float: left; margin-top: 70px;margin-top: 110px">
+    <table class=table11_6 border="1" style="margin:20px auto;overflow: hidden;margin-left: 500px; border-collapse: collapse;">
+        <caption style="font-size: 30px;">室内环境状态界面</caption>
+        {% for led in led1 %}
+            <tr height="60">
+                <td width="60">灯</td>
+                <td width="60">{{ led }}</td>
+                <form action="/guanlijiemian" method="post" onsubmit="checkForm()">
+                    <td width="60">
+                        <button value="on" name="led" style="width: 70px; height: 30px;border-radius: 5px;">打开
+                        </button>
+                    </td>
+                </form>
+                <form action="/guanlijiemian" method="post" onsubmit="checkForm1()">
+                    <td width="60">
+                        <button value="off" name="led" style="width: 70px; height: 30px;border-radius: 5px;">关闭
+                        </button>
+                    </td>
+                </form>
+            </tr>
+        {% endfor %}
+        {% for huoyan in huoyan1 %}
+            <tr height="60">
+                <td width="120">火焰传感器1</td>
+                <td width="100">{{ huoyan }}</td>
+            </tr>
+        {% endfor %}
+        {% for huoyan in huoyan2 %}
+            <tr height="60">
+                <td width="120">火焰传感器2</td>
+                <td width="100">{{ huoyan }}</td>
+            </tr>
+        {% endfor %}
+        {% for yanwu in yanwu1 %}
+            <tr height="60">
+                <td width="120">烟雾传感器1</td>
+                <td width="100">{{ yanwu }}</td>
+            </tr>
+        {% endfor %}
+        {% for yanwu in yanwu2 %}
+            <tr height="60">
+                <td width="120">烟雾传感器2</td>
+                <td width="100">{{ yanwu }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

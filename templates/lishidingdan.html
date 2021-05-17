@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>智慧餐厅系统历史订单</title>
+    <!-- 这个是提前引入的字体图标 -->
+    <!--<meta http-equiv="refresh" content="30">-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../static/css/index.css"/>
+    <style>
+        .content {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <input type="checkbox" id="checkbox"/>
+    <!-- 复选框的id属性值和label元素的for属性值必须是相同的,才能够通过点击label选中复选框 -->
+    <label for="checkbox">
+        <i class="fa fa-bars"></i>
+    </label>
+    <ul style="float: left;">
+        <li>
+            <img src="../static/images/1.jpg" alt=""/>
+            <span>欢迎您! {{ session.name }}</span>
+        </li>
+        <li>
+            <a href="/houtaishouye">
+                <i class="fa fa-home"></i>
+                <span>后台首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/tongji">
+                <i class="fa fa-sitemap"></i>
+                <span>统计</span>
+            </a>
+        </li>
+        <li>
+            <a href="/dingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>订单列表</span>
+            </a>
+        </li>
+        <li>
+            <a href="/lishidingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>历史订单</span>
+            </a>
+        </li>
+        <li>
+            <a href="/guanlijiemian">
+                <i class="fa fa-windows"></i>
+                <span>管理界面</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="container" style="float: left; margin-top: 70px;margin-top: 90px">
+    <table class=table11_6 align="center" style="margin: 20px auto;overflow: hidden;margin-left: 270px; border-collapse: collapse;">
+        <!-- <h2>订单</h2> -->
+        <caption style="font-size: 30px;">历史订单详情</caption>
+        <tr height="60">
+            <td width="80">编号</td>
+            <td width="80">桌号</td>
+            <td width="80">人数</td>
+            <td width="200">菜品</td>
+            <td width="80">总价</td>
+            <td width="150">订单时间</td>
+        </tr>
+        {% for b in username %}
+            <tr height="60">
+                <td style="width: 50px; word-break: break-all;">{{ b[0] }}</td>
+                <td style="width: 50px; word-break: break-all;">{{ b[1] }}</td>
+                <td style="width: 50px; word-break: break-all;">{{ b[2] }}</td>
+                <!-- 换行-->
+                <!-- <td class="content">{{ b[3] }}</td> -->
+                <td style="width: 250px; word-break: break-all;">{{ b[3] }}</td>
+                <td style="width: 80px; word-break: break-all;">{{ b[4] }}</td>
+                <td style="width: 200px; word-break: break-all;">{{ b[5] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

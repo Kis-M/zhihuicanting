@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>智慧餐厅系统后台首页</title>
+    <!-- 这个是提前引入的字体图标 -->
+    <link rel="stylesheet" href="../static/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../static/css/index.css"/>
+</head>
+<body>
+<div class="navbar">
+    <input type="checkbox" id="checkbox"/>
+    <!-- 复选框的id属性值和label元素的for属性值必须是相同的,才能够通过点击label选中复选框 -->
+    <label for="checkbox">
+        <i class="fa fa-bars"></i>
+    </label>
+    <ul style="float: left;">
+        <li>
+            <img src="../static/images/1.jpg" alt=""/>
+            <span>欢迎您! {{ session.name }}</span>
+        </li>
+        <li>
+            <a href="/houtaishouye">
+                <i class="fa fa-home"></i>
+                <span>后台首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/tongji">
+                <i class="fa fa-sitemap"></i>
+                <span>统计</span>
+            </a>
+        </li>
+        <li>
+            <a href="/dingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>订单列表</span>
+            </a>
+        </li>
+        <li>
+            <a href="/lishidingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>历史订单</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/guanlijiemian">
+                <i class="fa fa-windows"></i>
+                <span>管理界面</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="container" style="float: left; margin-top: 70px;">
+    <h1 style="margin-left: 500px;margin-top: 50px">欢迎{{ session.name }}来到智慧餐厅首页！</h1>
+</div>
+</body>
+</html>

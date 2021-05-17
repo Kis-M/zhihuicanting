@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>智慧餐厅系统统计界面</title>
+    <!-- 这个是提前引入的字体图标 -->
+    <!--<meta http-equiv="refresh" content="30">-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../static/css/index.css"/>
+</head>
+<body>
+<div class="navbar">
+    <input type="checkbox" id="checkbox"/>
+    <!-- 复选框的id属性值和label元素的for属性值必须是相同的,才能够通过点击label选中复选框 -->
+    <label for="checkbox">
+        <i class="fa fa-bars"></i>
+    </label>
+    <ul style="float: left;">
+        <li>
+            <img src="../static/images/1.jpg" alt=""/>
+            <span>欢迎您! {{ session.name }}</span>
+        </li>
+        <li>
+            <a href="/houtaishouye">
+                <i class="fa fa-home"></i>
+                <span>后台首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/tongji">
+                <i class="fa fa-sitemap"></i>
+                <span>统计</span>
+            </a>
+        </li>
+        <li>
+            <a href="/dingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>订单列表</span>
+            </a>
+        </li>
+        <li>
+            <a href="/lishidingdan">
+                <i class="fa fa-shopping-cart"></i>
+                <span>历史订单</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/guanlijiemian">
+                <i class="fa fa-windows"></i>
+                <span>管理界面</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="main" style="width: 330px;height:380px;margin-left: 80px;float: left;margin-top: 110px"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '人数统计'
+        },
+        tooltip: {},
+        legend: {
+            data: ['人数']
+        },
+        xAxis: {
+            data: ["当前人数", "本周总人数"]
+        },
+        yAxis: {},
+        series: [{
+            name: '人数',
+            type: 'bar',
+            data: [{{ renshu[0][0] }}, {{ renshu[0][0]+renshu1[0][0] }}]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+<div id="main1" style="width: 400px;height:400px;margin-left: 70px;float: left;margin-top: 90px"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main1'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '火锅锅底销量'
+        },
+        tooltip: {},
+        legend: {
+            data1: ['份']
+        },
+        xAxis: {
+            data: ['牛油锅底', '鸳鸯锅底', '菌汤', '番茄', '三鲜']
+        },
+        yAxis: {},
+        series: [{
+            name: '份',
+            type: 'bar',
+            data: [{{ d2[0] }}, {{ d2[1] }}, {{ d2[2] }}, {{ d2[3] }}, {{ d2[4] }}]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+<div id="main2" style="width: 490px;height:400px;margin-left: 40px;float: left;margin-top: 90px"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main2'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '荤菜销量'
+        },
+        tooltip: {},
+        legend: {
+            data1: ['份']
+        },
+        xAxis: {
+            data: ['虾滑', '毛肚', '火锅牛排', '精品小肥牛', '秘制羊肉']
+        },
+        yAxis: {},
+        series: [{
+            name: '份',
+            type: 'bar',
+            data: [{{ d2[5] }}, {{ d2[6] }}, {{ d2[7] }}, {{ d2[8] }}, {{ d2[9] }}]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}主页{% endblock %}
+{% block navli %}
+    <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">您好！</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
+    </ul>
+{% endblock navli %}
+{% block content %}
+    <div class="container text-center">
+
+        <h1>请先登录！</h1>
+
+    </div>
+{% endblock %}
